@@ -59,13 +59,37 @@ public class TADPolinomio implements Polinomio{
     }
 
     @Override
-    public Polinomio suma(Polinomio p) {
-        
+    public Polinomio suma(TADMap p) {
+        if (p.isEmpty()){
+            return polinomio;
+        }
+        else {
+            int i = 0;
+            int j = 0;
+            while(i != p.size()){
+                if(p.containsKey(j)){
+                    polinomio.put(j,p.get(j));
+                    i++;
+                    j++;
+                }else{
+                    j++;
+                }
+            }
+            return polinomio;
+        } 
     }
 
     @Override
     public Polinomio derivada() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(polinomio.isEmpty()){
+            return polinomio;
+        }
+        else{
+            int i = 0;
+            int j = 0;
+            while(i != polinomio.size()){
+                
+        }
     }
     
 }
