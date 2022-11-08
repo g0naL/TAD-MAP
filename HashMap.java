@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package tadmapa;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,7 +26,9 @@ public class HashMap <K,V> implements TADMap <K,V>{
     }
     
     public void clear (){
-        
+        for(List <HashItem<K,V>> li : map){
+            
+        }
     }
     
     public boolean containsKey(K k){
@@ -74,28 +80,31 @@ public class HashMap <K,V> implements TADMap <K,V>{
         return null;
     }
     
-    public void insertar(K k, V v) {
+    public void put(K k, V v) {
        
         if(get(k) == null){  //get(k) = clave, entonces si esa clave no está en la lista, añadimos el par de datos
           int index = funcionHash(k);
           map[index].add(new HashItem (k,v));
         }else{
-           eliminar (k);
+           remove (k);
            int index = funcionHash(k);
            map[index].add(new HashItem (k,v));
         }
         
     }
-
     
-    public void eliminar(K k) {
+    
+    public V remove(K k) {
+        V viejo = null;
         int index = funcionHash(k);
         for(HashItem ha : map[index]){
             if(ha.getClave().equals(k)){
+                viejo = get(k);
                 map[index].remove(ha);
+                return viejo;
             }
         }
-        
+        return null;
     }
     
 
@@ -121,10 +130,10 @@ public class HashMap <K,V> implements TADMap <K,V>{
         return valores.iterator();
     }
     
-    public Iterable<HashItem<K,V>> getSets(){
-        List <HashItem <K ,V>> KV = new ArrayList<>();
-        for ( List < HashItem <K,V>> li : map){
-            KV.add(li.get());
-        }
-    }
+//    public Iterable<HashItem<K,V>> getSets(){
+//        List <HashItem <K ,V>> KV = new ArrayList<>();
+//        for ( List < HashItem <K,V>> li : map){
+//            KV.add(li.get());
+//        }
+//    }
 }
