@@ -1,10 +1,11 @@
 package tadmap;
-
+import java.util.Map;
 /**
  *
  * @author Matteo
+
  */
-public interface Polinomio {
+public interface Polinomio{
 // Produce: Inicializa this al polinomio cero
     
     public int grado();
@@ -32,12 +33,12 @@ public interface Polinomio {
     // Produce: elimina el término con exponente que se pasa como parámetro
 
 
-    public Polinomio suma(Polinomio p);
+    public Map suma(Map<Integer,Double> p);
     
     // Produce: un nuevo polinomio que es la suma de los polinomios p y this
 
 
-    public Polinomio derivada();
+    public Map derivada();
     
     // Produce: Dado el polinomio this de la forma anxn + an-1xn-1 + …+ a1x1 + a0x0
     // devuelve su derivada: (n*an) xn-1+ (n-1 * an-1) xn-2 + …+ a1
