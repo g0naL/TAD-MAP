@@ -1,13 +1,15 @@
 package tadmap;
-
+import java.util.Map;
 /**
  *
  * @author Matteo
  */
 public class TADPolinomio implements Polinomio{
-
+    
+    Map <Integer, Double> polinomio;
+    
     public TADPolinomio(){
-        TADMap polinomio = new TADMap<Integer, Double>();
+        polinomio = (Map<Integer, Double>) new HashMap<Integer, Double>();
     }
     
     @Override
@@ -55,11 +57,11 @@ public class TADPolinomio implements Polinomio{
 
     @Override
     public void eliminarTermino(int exponente) {
-        (polinomio.remove(exponente) == null)   
+        polinomio.remove(exponente);
     }
 
-    @Override
-    public Polinomio suma(TADMap p) {
+    public Map<Integer, Double> suma(Map<Integer, Double> p) {
+        
         if (p.isEmpty()){
             return polinomio;
         }
@@ -68,6 +70,10 @@ public class TADPolinomio implements Polinomio{
             int j = 0;
             while(i != p.size()){
                 if(p.containsKey(j)){
+                    if(polinomio.containsKey(j)){
+                        double num= (polinomio.get(j)+p.get(j));
+                        polinomio.put(j,num);
+                    }
                     polinomio.put(j,p.get(j));
                     i++;
                     j++;
@@ -79,8 +85,8 @@ public class TADPolinomio implements Polinomio{
         } 
     }
 
-    @Override
-    public Polinomio derivada() {
+    public Map derivada() {
+        
         if(polinomio.isEmpty()){
             return polinomio;
         }
@@ -88,8 +94,20 @@ public class TADPolinomio implements Polinomio{
             int i = 0;
             int j = 0;
             while(i != polinomio.size()){
-                
+                if(polinomio.containsKey(j)){
+                    double der = polinomio.get(j)*j;
+                    polinomio.remove(j);
+                    polinomio.put(j--, der); 
+                    i++;
+                    j++;
+                }
+                else{
+                    j++;
+                }
+            }
+            return polinomio;
         }
     }
+
     
 }
