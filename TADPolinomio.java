@@ -95,11 +95,13 @@ public class TADPolinomio implements Polinomio{
             int j = 0;
             while(i != polinomio.size()){
                 if(polinomio.containsKey(j)){
-                    double der = polinomio.get(j)*j;
-                    polinomio.remove(j);
-                    polinomio.put(j--, der); 
-                    i++;
-                    j++;
+                   if(j == 0){
+                        double der = polinomio.get(j)*j;
+                        polinomio.remove(j);
+                        polinomio.put(j--, der); 
+                        i++;
+                        j++;
+                   }else{
                 }
                 else{
                     j++;
