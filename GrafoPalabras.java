@@ -27,7 +27,7 @@ public class GrafoPalabras {
     public void rellenarGrafo(){
         
     }
-    
+    //Reemplaza en la posicion que le pases un caracter de la palabra, ejemplo: reemplazarCaracter(Hola, 1, u) = Hula
     public static String reemplazaCaracter(String str, int pos, char letra) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < str.length(); i++) {
