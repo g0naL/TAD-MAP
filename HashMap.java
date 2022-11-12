@@ -44,7 +44,7 @@ public class HashMap <K,V> implements TADMap <K,V>{
     public boolean containsValue(V v){
         for( List<HashItem<K, V>> li : map){
             for(HashItem <K,V> hi : li){
-                if(hi.getClave().equals(v)){
+                if(hi.getValor().equals(v)){
                     return true;
                 }
             }
@@ -52,6 +52,7 @@ public class HashMap <K,V> implements TADMap <K,V>{
         return false;
     }
     
+
     public int size(){
         int numElem = 0;
         for(List <HashItem<K,V>> li : map){
