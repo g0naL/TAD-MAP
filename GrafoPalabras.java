@@ -14,13 +14,13 @@ public class GrafoPalabras {
             if (!m.containsKey(clave)) {
                 aux.add(p);
                 m.put(clave, aux);
-                m.clear();
+                aux.clear();
             } else {
                 aux = m.get(clave);
                 aux.add(",");
                 aux.add(p);
                 m.put(clave, aux);
-                m.clear();
+                aux.clear();
             }
         }
     }
