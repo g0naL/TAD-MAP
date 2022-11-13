@@ -57,7 +57,7 @@ public class HashMap <K,V> implements TADMap <K,V>{
     public int size(){
         int numElem = 0;
         for(List <HashItem<K,V>> li : map){
-            numElem += li.size();
+            numElem += 1;
         }
         return numElem;
     }
