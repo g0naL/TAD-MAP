@@ -5,27 +5,36 @@ import grafo.*;
 
 public final class GrafoPalabras {
 
-    Map<String, List<String>> palabras;
+    HashMap<String, List<String>> palabras;
     ListaAdyacencia<String, Integer> grafoPalabras;
-    
-    public GrafoPalabras(List<String> palabras){
+
+    public GrafoPalabras(List<String> palabras) {
         insertarPalabras(palabras);
         insertarVertices(palabras);
         insertarArcos();
     }
-    //SIN ACABAR
+
     public void insertarArcos() {
-        for (String clave : palabras.keySet()) {
-            Iterator<Vertice<String>> it = grafoPalabras.vertices();
+        for (Iterator<String> claves = palabras.getClaves(); claves.hasNext();) {
+            List<String> lista = palabras.get(claves.next());
+
+            if (lista.size() > 1) {
+                for (int i = 0; i < lista.size(); i++) {
+                    for (int j = i + 1; j < lista.size(); j++) {
+                        Arco ida = new Arco(new Vertice(lista.get(i)), new Vertice(lista.get(j)), 0);
+                        Arco vuelta = new Arco(new Vertice(lista.get(j)), new Vertice(lista.get(i)), 0);
+                        grafoPalabras.insertarArco(ida);
+                        grafoPalabras.insertarArco(vuelta);
+                    }
+
+                }
+            }
         }
     }
-    
-    public void insertarVertices(List<String> p){
-        for(String palabra : p){
-            Vertice<String> aux;
-            aux.setEtiqueta(palabra);
-            if(!grafoPalabras.estaVertice(aux))
-                grafoPalabras.insertarVertice(aux);
+
+    public void insertarVertices(List<String> p) {
+        for (String palabra : p) {
+            grafoPalabras.insertarVertice(new Vertice<>(palabra));
         }
     }
 
@@ -44,7 +53,6 @@ public final class GrafoPalabras {
                         aux.clear();
                     } else {
                         aux = palabras.get(clave);
-                        aux.add(",");
                         aux.add(palabra);
                         palabras.put(clave, aux);
                         aux.clear();
