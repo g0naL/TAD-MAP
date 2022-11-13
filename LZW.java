@@ -61,7 +61,6 @@ public class LZW {
             cont++;
         }
         
-        System.out.println(resultado);
         return resultado;
     }
     
@@ -80,7 +79,7 @@ public class LZW {
         String Car;
         String aux = "";
         String resultado = "";
-        int NumCod = 256;
+        int numCod = 256;
         
         while(x.charAt(cont) != '-') {
             aux = aux + Character.toString(x.charAt(cont));
@@ -99,7 +98,8 @@ public class LZW {
             cont++;
             New = Integer.parseInt(aux);
             if (!segdicc.containsKey(New)) {
-                
+                Cad = segdicc.get(Old).get(0);
+                Cad = Cad + Car;
             }
             else {
                 Cad = segdicc.get(New).get(0);
@@ -107,8 +107,11 @@ public class LZW {
             resultado = resultado + Cad;
             Car = Character.toString(Cad.charAt(0));
             List<String> trad = new ArrayList();
-            
+            trad.add(segdicc.get(Old).get(0).concat(Car));
+            segdicc.put(numCod, trad);
+            numCod++;
+            Old = New;
             }
-
+        return resultado;
     }
 }
