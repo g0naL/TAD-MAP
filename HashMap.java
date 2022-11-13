@@ -26,8 +26,9 @@ public class HashMap <K,V> implements TADMap <K,V>{
     }
     
     public void clear (){
-        for(List <HashItem<K,V>> li : map){
-            
+        map.clear();
+       for(int i = 0; i < map.length; i++){
+            map[i] = new ArrayList<>();
         }
     }
     
