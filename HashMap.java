@@ -74,9 +74,9 @@ public class HashMap <K,V> implements TADMap <K,V>{
     
     public V get (K k){
         int index = funcionHash(k);
-        for(HashItem <K,V> ha : map[index]){
-            if (ha.getClave().equals(k)){
-                return ha.getValor();
+        for(HashItem <K,V> hi : map[index]){
+            if (hi.getClave().equals(k)){
+                return hi.getValor();
             }
         }
         return null;
@@ -99,10 +99,10 @@ public class HashMap <K,V> implements TADMap <K,V>{
     public V remove(K k) {
         V viejo = null;
         int index = funcionHash(k);
-        for(HashItem ha : map[index]){
-            if(ha.getClave().equals(k)){
+        for(HashItem hi : map[index]){
+            if(hi.getClave().equals(k)){
                 viejo = get(k);
-                map[index].remove(ha);
+                map[index].remove(hi);
                 return viejo;
             }
         }
