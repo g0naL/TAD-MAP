@@ -4,26 +4,30 @@
  */
 package ejercicio2b;
 
-import expecificacionmapa.MAP;
 import java.io.InputStream;
 import java.util.HashMap;
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
 import java.util.Map;
-import java.util.HashMap;
+import javax.json.*;
+
 /**
  *
  * @author lucas
  */
-public class ExtendAbreviaturas {
+public class extender {
     
-
-    /**
-     * htAbbreviations. Mapa constante que contiene para cada idioma, su diccionario de abreviaturas correspondiente.
-     * el cual es otro Mapa que contiene para cada abreviatura su extensión
-     * El Mapa se crea a partir de ficheros JSON, uno para cada idioma
-    */
+    private static final Map<String, Map <String, String>> Abreviaturas = new HashMap<>();
+    
+    public static void main (String[] args){
+        
+        String mensaje= "Bonne apt fidbhdg";
+        String extension = extensionAbreviaturas (mensaje, "fr");
+        
+        System.out.println("mensaje descomprimido:" + extension);
+        
+        
+        
+    }
+    
     private static final Map<String, Map<String,String>> htAbbreviations = new HashMap<>();
     
     static { 
@@ -33,8 +37,8 @@ public class ExtendAbreviaturas {
         }) {
 
             String lang = i.substring(7, 9).toUpperCase();
-            InputStream is = ExtendAbreviaturas.class.getResourceAsStream(i);
-            JsonReader rdr = Json.createReader(is);
+            InputStream is = ExtendAbreviaturas.class.getResourceAsStream(i);  // abre archivo
+            JsonReader rdr = Json.createReader(is); // creo u nobjeto de lectura sobre el archivo
             JsonObject jsonObject = rdr.readObject();
             rdr.close();
             Map<String, String> dict = new HashMap<>();
@@ -81,7 +85,6 @@ public class ExtendAbreviaturas {
         texto = texto.substring(0, texto.length()-1);
         return texto;
    }
-
     public void clear() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -130,4 +133,12 @@ public class ExtendAbreviaturas {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
       
+}
+
+    
+    
+    
+    
+    
+    
 }
