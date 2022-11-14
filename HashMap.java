@@ -64,7 +64,7 @@ public class HashMap <K,V> implements TADMap <K,V>{
     
     public boolean isEmpty(){
         for (List <HashItem<K,V>> li : map){
-            if(!hi.isEmpty()){
+            if(!li.isEmpty()){
                 return false;
             }
         }
