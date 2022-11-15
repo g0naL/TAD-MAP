@@ -10,7 +10,7 @@ public final class GrafoPalabras {
 
     public GrafoPalabras(List<String> palabras) {
         insertarPalabras(palabras);
-        isertarPalabrasGrafo();
+        insertarPalabrasGrafo();
     }
 
     public void insertarPalabrasGrafo() {
