@@ -28,7 +28,7 @@ public class TADPolinomio implements Polinomio{
                     j++;
                 }
             }
-            return j;
+            return j--;
         }    
     }
 
