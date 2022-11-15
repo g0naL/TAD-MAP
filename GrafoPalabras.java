@@ -10,12 +10,11 @@ public final class GrafoPalabras {
 
     public GrafoPalabras(List<String> palabras) {
         insertarPalabras(palabras);
-        insertarVertices(palabras);
-        insertarArcos();
+        isertarPalabrasGrafo();
     }
 
-    public void insertarArcos() {
-        for (Iterator<String> claves = palabras.getClaves(); claves.hasNext();) {
+    public void insertarPalabrasGrafo() {
+        for (Iterator<String> claves = palabras.getClaves(); claves.hasNext(); claves.next()) {
             List<String> lista = palabras.get(claves.next());
 
             if (lista.size() > 1) {
@@ -26,15 +25,8 @@ public final class GrafoPalabras {
                         grafoPalabras.insertarArco(ida);
                         grafoPalabras.insertarArco(vuelta);
                     }
-
                 }
             }
-        }
-    }
-
-    public void insertarVertices(List<String> p) {
-        for (String palabra : p) {
-            grafoPalabras.insertarVertice(new Vertice<>(palabra));
         }
     }
 
